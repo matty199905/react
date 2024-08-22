@@ -7,8 +7,8 @@ import { recommended } from '../../data/Recommended';
 
 const CardsRecomendacion = () => {
   return (
-    <CardsContainer gridLength={4}>
-   {recommended.map((product) => {return <CardRecomendacion {...product} key={product.key}/>})}
+    <CardsContainer gridLength={recommended.length}>
+   {recommended.map((product) => {return <CardRecomendacion {...product} key={product.id}/>})}
     </CardsContainer>
   );
 };

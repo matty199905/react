@@ -4,6 +4,7 @@ import Button from '../UI/Button/Button';
 import { ProductosContainer } from './CardsProductosStyles';
 import { ButtonContainerStyled } from '../../pages/Home/HomeStyles';
 import { ProductosXCategorias } from '../../data/Products';
+import { useSelector } from 'react-redux';
 
 
 const CardsProductos = () => {
@@ -12,6 +13,10 @@ const CardsProductos = () => {
 // OBJECT.ENTRIES == Se encarga de tranformar un objeto en un ARRAY de ARRAYS
   console.log(Object.entries(ProductosXCategorias))
   
+
+
+  const products = useSelector()
+
 
   return (
     <>

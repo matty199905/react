@@ -3,12 +3,16 @@ import React from 'react';
 import Categoria from '../Categorias/Categoria'
 import { CategoriasContainer } from './CategoriasStyles';
 import { Categories } from '../../data/Categories';
+import { useSelector } from 'react-redux';
 
 
 const Categorias = () => {
+
+const categories = useSelector(state => state.categories.categories)
+// USE SELECTOR = Llama al SLICE de Categoria
 return (
     <CategoriasContainer>
-  {Categories.map((categoria)=>{return <Categoria {...categoria} key={categoria.id}/>})}
+  {categories.map((categoria)=>{return <Categoria {...categoria} key={categoria.id}/>})}
     </CategoriasContainer>
   );
 };

@@ -1,4 +1,4 @@
-export const products = [
+export const Products = [
   {
     id: 1,
     title: 'La Aco',
@@ -257,10 +257,10 @@ export const products = [
   },
 ];
 
-export const TotalProducts = products.length;
+export const TotalProducts = Products.length;
 
 
-export const ProductosXCategorias = products.reduce((acc, product)=>{
+export const ProductosXCategorias = Products.reduce((acc, product)=>{
 
   if(!acc[product.category]){
     acc[product.category] = []

@@ -2,14 +2,17 @@ import { combineReducers, configureStore } from '@reduxjs/toolkit';
 import categoriesReducer from './categories/categoriesSlice';
 import storage from 'redux-persist/lib/storage';
 import persistReducer from 'redux-persist/es/persistReducer';
-import persistStore from 'redux-persist/lib/persistStore';
+import persistStore from 'redux-persist/es/persistStore'
+import productsReducer from './products/productsSlice'
+
 
 
 
 const reducers = combineReducers({
  
   categories: categoriesReducer,
-  
+  products: productsReducer,
+
 });
 
 
@@ -37,5 +40,5 @@ export const store = configureStore({
 
 
 
-export const persistore = persistStore(store)
+export const persist_store = persistStore(store)
 // Permite PERSISTIR LA DATA DEL STORE

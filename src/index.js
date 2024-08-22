@@ -8,19 +8,19 @@ import { GlobalStyles } from './styles/GlobalStyles';
 
 import { Provider } from 'react-redux'
 import { PersistGate } from 'redux-persist/integration/react';
-import { persistore, store } from './redux/store';
+import { persist_store, store } from './redux/store';
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <>
     <Provider store={store}>
-      <PersistGate persistore={persistore}>
+        <PersistGate persist_store={persist_store}>
         <GlobalStyles />
         <BrowserRouter>
           <App />
         </BrowserRouter>
-      </PersistGate>
+        </PersistGate>  
     </Provider>
   </>
 );
