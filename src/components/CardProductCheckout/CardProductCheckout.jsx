@@ -14,30 +14,35 @@ import {
   TextStyled,
   QuantityContainerStyled,
 } from './CardProductCheckoutStyles';
+import { useDispatch } from 'react-redux';
+import { addToCart, removeFromCart } from '../../redux/cart/cartSlice';
 
-const CardProductCheckout = () => {
+const CardProductCheckout = ({img, id, price, desc, quantity, title}) => {
+
+const dispatch = useDispatch()
+
   return (
     <CardContainerStyled>
       <img
-        src='https://res.cloudinary.com/dcatzxqqf/image/upload/v1656648456/coding/NucbaZappi/Productos/muzza-mentolada_fmh9at.png'
-        alt='La Aco'
+        src={img}
+        alt={title}
       />
       <CardInfoStyled>
-        <ProductTitleStyled>La Aco</ProductTitleStyled>
-        <TextStyled>Cheta la gorra</TextStyled>
-        <PriceStyled>{formatPrice(3000)}</PriceStyled>
+        <ProductTitleStyled>{title}</ProductTitleStyled>
+        <TextStyled>{desc}</TextStyled>
+        <PriceStyled>{formatPrice(price)}</PriceStyled>
       </CardInfoStyled>
       <QuantityContainerStyled>
         <Increase
           bgColor='var(--btn-gradient-secondary)'
-          onClick={e => e.preventDefault()}
+          onClick={() => dispatch(removeFromCart(id))}
         >
           <FaMinus />
-        </Increase>
-        <Count>{3}</Count>
-        <Increase onClick={e => e.preventDefault()}>
+        </Increase> 
+         <Count>{quantity}</Count>
+        <Increase onClick={() => dispatch(addToCart({img, id, price, desc, quantity, title}))}>
           <BsPlusLg />
-        </Increase>
+        </Increase> 
       </QuantityContainerStyled>
     </CardContainerStyled>
   );

@@ -29,14 +29,14 @@ export const InputStyled = styled.input`
   width: 70%;
   margin-top: 1rem;
 
-  ::placeholder {
-    opacity: 60%;
+  &::placeholder {
+    opacity: 50%;
   }
   -webkit-text-fill-color: white;
 
-  :-webkit-autofill,
-  :-webkit-autofill:hover,
-  :-webkit-autofill:focus {
+  &:-webkit-autofill,
+  &:-webkit-autofill:hover,
+  &:-webkit-autofill:focus {
     -webkit-box-shadow: 0 0 0px 1000px var(--gray-bg) inset;
   }
 `;
@@ -44,6 +44,6 @@ export const InputStyled = styled.input`
 export const ErrorMessageStyled = styled.p`
   margin: 0;
   margin-top: 5px;
-  color: #fb103d;
+  color: red;
   font-size: 14px;
 `;

@@ -5,6 +5,7 @@ import { Categories } from '../../data/Categories';
 
 const INITIAL_STATE = {
   categories: Categories,
+  selectCategory: null,
 };
 
 export const categoriesSlice = createSlice({
@@ -14,12 +15,17 @@ export const categoriesSlice = createSlice({
     getCategories: state => {
       return state;
     },
-  },
+    selectCategories: (state, action) => {
+      return {...state,
+        selectedCategory: action.payload !== state.selectedCategory ? action.payload : null
+      }
+    }
+  }
 });
 
 
 
-export const { getCategories } = categoriesSlice.actions;
+export const { getCategories, selectCategories} = categoriesSlice.actions;
 // Permite usarlo luego para un DISPATCH (evento dentro del componente)
 
 

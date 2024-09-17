@@ -271,3 +271,9 @@ export const ProductosXCategorias = Products.reduce((acc, product)=>{
   return acc;
 },{})
 
+
+
+
+
+
+

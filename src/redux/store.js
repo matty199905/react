@@ -4,6 +4,10 @@ import storage from 'redux-persist/lib/storage';
 import persistReducer from 'redux-persist/es/persistReducer';
 import persistStore from 'redux-persist/es/persistStore'
 import productsReducer from './products/productsSlice'
+import recommendedReducer from './recommended/recommendedSlice';
+import cartReducer from './cart/cartSlice';
+import userReducer from './User/userSlice';
+import ordersReducer from './orders/ordersSlice';
 
 
 
@@ -12,6 +16,10 @@ const reducers = combineReducers({
  
   categories: categoriesReducer,
   products: productsReducer,
+  recommended: recommendedReducer,
+  cart: cartReducer,
+  user: userReducer,
+  orders: ordersReducer,
 
 });
 
@@ -20,7 +28,9 @@ const reducers = combineReducers({
 const persistConfig = {
   key: 'root',
   storage,
-  // storage= permite guardarlo en el local storage
+  // STORAGE= permite guardarlo en el local storage
+  whitelist: ["cart", "user"]
+  // WHITELIST= permite elegir que REDUCERS queremos persistir en el STORAGE, CONO NO QUEREMOS PERSISTIR NADA, LO DEJAMOS VACIO
 };
 
 
@@ -36,9 +46,11 @@ export const store = configureStore({
 
   reducer: persistedReducer,
 
+  middleware: (getDefaultMiddleware) => getDefaultMiddleware({ serializableCheck: false})
+   // Esto lo debemos hacer siempre que utilicemos una API ya que Redux no maneja procesamientos de datos externos
 });
 
 
 
-export const persist_store = persistStore(store)
+export const persistor = persistStore(store)
 // Permite PERSISTIR LA DATA DEL STORE

@@ -9,9 +9,9 @@ export const LoaderContainer = styled.div`
 `;
 
 export const LoaderStyled = styled(motion.div)`
-  border: 2px dashed #d9d9d9;
-  width: 20px;
-  height: 20px;
+  border: 2px solid #d9d9d9;
+  width: 50px;
+  height: 50px;
   border-radius: 50%;
   border-left-color: transparent;
 

@@ -12,7 +12,7 @@ const categories = useSelector(state => state.categories.categories)
 // USE SELECTOR = Llama al SLICE de Categoria
 return (
     <CategoriasContainer>
-  {categories.map((categoria)=>{return <Categoria {...categoria} key={categoria.id}/>})}
+  {categories.map((category)=>{return <Categoria {...category} key={category.id}/>})}
     </CategoriasContainer>
   );
 };

@@ -1,8 +1,9 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { Products } from "../../data/Products";
+import { ProductosXCategorias, TotalProducts } from "../../data/Products";
 
 const initialStateProducts = {
-    products: Products
+    products: ProductosXCategorias,
+    TotalProducts: TotalProducts,
 }
 
 

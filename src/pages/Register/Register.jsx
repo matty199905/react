@@ -9,25 +9,65 @@ import {
   LoginContainerStyled,
   LoginEmailStyled,
 } from './RegisterStyles';
+import { registerInitialValues } from '../../Formik/initialState';
+import { registerValidationSchema } from '../../Formik/validationSchema';
+import { createUser } from '../../axios/axiosUser';
+import { useNavigate } from 'react-router-dom';
 
 const Register = () => {
+
+const navigate = useNavigate()
+
   return (
     <LoginContainerStyled>
       <h1>Crea tu cuenta</h1>
-      <Formik>
+
+      <Formik
+        initialValues={registerInitialValues}
+        validationSchema={registerValidationSchema}
+        onSubmit={ async (values, {resetForm})=>{
+          const user = await createUser(values.name, values.email, values.password);
+          console.log(user);
+         // resetForm()
+          
+
+          if(user) {
+                 navigate('/login')
+          }
+        }}>
+
         <Form>
-          <LoginInput type='text' placeholder='Nombre' />
-          <LoginInput type='text' placeholder='Email' />
-          <LoginInput type='password' placeholder='Password' />
-         
+
+          <LoginInput 
+          type='text' 
+          placeholder='Nombre'
+          name='name'
+          id='name' />
+
+          <LoginInput 
+          type='text' 
+          placeholder='Email'
+          name='email'
+          id='email' />
+
+          <LoginInput 
+          type='password' 
+          placeholder='Password'
+          name='password'
+          id='password' />
+
           <LoginEmailStyled to='/login'>
             <p>¿Ya tenes cuenta? Inicia sesión</p>
           </LoginEmailStyled>
-          <Submit type='button' onClick={e => e.preventDefault()}>
+
+          <Submit>
             Registrarte
           </Submit>
+
         </Form>
+
       </Formik>
+
     </LoginContainerStyled>
   );
 };
